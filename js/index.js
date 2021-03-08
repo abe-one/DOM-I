@@ -46,8 +46,18 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
-// let cta_image = document.getElementById("cta-img");
-// cta_image.setAttribute("src", siteContent["cta"]["img-src"]);
+// My work
+
+function navValues(node, index) {
+  return (node.textContent = this[`nav-item-${index}`]);
+  // return (node.textContent = "FIDDDLE");
+}
+
+let nav_link = document.querySelectorAll("nav > a");
+nav_link.forEach(navValues, siteContent["nav"]);
+
+let cta_image = document.getElementById("cta-img");
+cta_image.setAttribute("src", siteContent["cta"]["img-src"]);
 
 let mid_img = document.getElementById("middle-img");
 mid_img.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
