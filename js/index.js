@@ -56,6 +56,10 @@ function navValues(node, index) {
 let nav_link = document.querySelectorAll("nav > a");
 nav_link.forEach(navValues, siteContent["nav"]);
 
+let cta_text = document.querySelector(".cta-text");
+
+cta_text.textContent = siteContent["cta"]["h1"];
+
 let cta_image = document.getElementById("cta-img");
 cta_image.setAttribute("src", siteContent["cta"]["img-src"]);
 
