@@ -50,15 +50,19 @@ logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 function navValues(node, index) {
   return (node.textContent = this[`nav-item-${index}`]);
-  // return (node.textContent = "FIDDDLE");
 }
 
 let nav_link = document.querySelectorAll("nav > a");
 nav_link.forEach(navValues, siteContent["nav"]);
 
-let cta_text = document.querySelector(".cta-text");
-
+let cta_text = document.querySelector(".cta-text h1");
 cta_text.textContent = siteContent["cta"]["h1"];
+
+// ^ FONT AND LINE BREAKS
+
+let cta_button = document.querySelector(".cta-text button");
+cta_button.textContent = siteContent["cta"]["button"];
+// cta_button.textContent = "DIDO";
 
 let cta_image = document.getElementById("cta-img");
 cta_image.setAttribute("src", siteContent["cta"]["img-src"]);
