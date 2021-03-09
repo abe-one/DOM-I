@@ -102,7 +102,22 @@ bottom_content.children[2].children[0].textContent =
 bottom_content.children[2].children[1].textContent =
   siteContent["main-content"]["vision-content"];
 
+// ^        For each instead        ^
+
 // Contact
+
+// let contact_title = document.querySelector(".contact h4");
+// contact_title.textContent = siteContent["contact"]["contact-h4"];
+
+// let contact_info = document.querySelectorAll(".contact > p");
+// contact.forEach
 
 let contact_info = document.querySelector(".contact");
 contact_info.children[0].textContent = siteContent["contact"]["contact-h4"];
+
+contact_info.children[1].textContent = siteContent["contact"]["address"];
+contact_info.children[2].textContent = siteContent["contact"]["phone"];
+contact_info.children[3].textContent = siteContent["contact"]["email"];
+
+let footer_p = document.querySelector("footer > p");
+footer_p.textContent = siteContent["footer"]["copyright"];
