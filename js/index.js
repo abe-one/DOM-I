@@ -42,30 +42,67 @@ const siteContent = {
   },
 };
 
-// Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute("src", siteContent["nav"]["img-src"]);
-
-// My work
+// Functions
 
 function navValues(node, index) {
   return (node.textContent = this[`nav-item-${index}`]);
 }
 
+// Header
+
+// Example: Update the img src for the logo
+let logo = document.getElementById("logo-img");
+logo.setAttribute("src", siteContent["nav"]["img-src"]);
+
 let nav_link = document.querySelectorAll("nav > a");
 nav_link.forEach(navValues, siteContent["nav"]);
+
+// CTA
 
 let cta_text = document.querySelector(".cta-text h1");
 cta_text.textContent = siteContent["cta"]["h1"];
 
-// ^ FONT AND LINE BREAKS
+// ^                 LINE BREAKS            ^
 
 let cta_button = document.querySelector(".cta-text button");
 cta_button.textContent = siteContent["cta"]["button"];
-// cta_button.textContent = "DIDO";
 
 let cta_image = document.getElementById("cta-img");
 cta_image.setAttribute("src", siteContent["cta"]["img-src"]);
 
+// Main Content
+
+let top_content = document.querySelector(".top-content");
+top_content.children[0].children[0].textContent =
+  siteContent["main-content"]["features-h4"];
+top_content.children[0].children[1].textContent =
+  siteContent["main-content"]["features-content"];
+
+top_content.children[1].children[0].textContent =
+  siteContent["main-content"]["about-h4"];
+top_content.children[1].children[1].textContent =
+  siteContent["main-content"]["about-content"];
+
 let mid_img = document.getElementById("middle-img");
 mid_img.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+
+let bottom_content = document.querySelector(".bottom-content");
+bottom_content.children[0].children[0].textContent =
+  siteContent["main-content"]["services-h4"];
+bottom_content.children[0].children[1].textContent =
+  siteContent["main-content"]["services-content"];
+
+bottom_content.children[1].children[0].textContent =
+  siteContent["main-content"]["product-h4"];
+bottom_content.children[1].children[1].textContent =
+  siteContent["main-content"]["product-content"];
+
+bottom_content.children[2].children[0].textContent =
+  siteContent["main-content"]["vision-h4"];
+bottom_content.children[2].children[1].textContent =
+  siteContent["main-content"]["vision-content"];
+
+// Contact
+
+let contact_info = document.querySelector(".contact");
+contact_info.children[0].textContent = siteContent["contact"]["contact-h4"];
