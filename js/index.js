@@ -54,8 +54,29 @@ function navValues(node, index) {
 let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
+let nav_a1 = document.createElement("a");
+
+let empty_href = document.createAttribute("href");
+empty_href.value = "#";
+
+nav_a1.setAttributeNode(empty_href);
+
+let nav_a2 = nav_a1.cloneNode();
+
+nav_a1.textContent = "Prepended";
+nav_a2.textContent = "Postpended";
+
+let nav_box = document.querySelector("nav");
+
 let nav_link = document.querySelectorAll("nav > a");
 nav_link.forEach(navValues, siteContent["nav"]);
+
+nav_box.prepend(nav_a1);
+nav_box.appendChild(nav_a2);
+
+document
+  .querySelectorAll("nav > a")
+  .forEach((a_nodes) => (a_nodes.style.color = "green"));
 
 // CTA
 
