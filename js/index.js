@@ -1,42 +1,144 @@
 const siteContent = {
-  "nav": {
+  nav: {
     "nav-item-1": "Services",
     "nav-item-2": "Product",
     "nav-item-3": "Vision",
     "nav-item-4": "Features",
     "nav-item-5": "About",
     "nav-item-6": "Contact",
-    "img-src": "img/logo.png"
+    "img-src": "img/logo.png",
   },
-  "cta": {
-    "h1": "DOM Is Awesome",
-    "button": "Get Started",
-    "img-src": "img/header-img.png"
+  cta: {
+    h1: "DOM Is Awesome",
+    button: "Get Started",
+    "img-src": "img/header-img.png",
   },
   "main-content": {
-    "features-h4":"Features",
-    "features-content": "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "about-h4":"About",
-    "about-content": "About content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "features-h4": "Features",
+    "features-content":
+      "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "about-h4": "About",
+    "about-content":
+      "About content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
     "middle-img-src": "img/mid-page-accent.jpg",
-    "services-h4":"Services",
-    "services-content": "Services content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "product-h4":"Product",
-    "product-content": "Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
-    "vision-h4":"Vision",
-    "vision-content": "Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "services-h4": "Services",
+    "services-content":
+      "Services content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "product-h4": "Product",
+    "product-content":
+      "Product content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
+    "vision-h4": "Vision",
+    "vision-content":
+      "Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
   },
-  "contact": {
-    "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
-    "phone" : "1 (888) 888-8888",
-    "email" : "sales@greatidea.io",
+  contact: {
+    "contact-h4": "Contact",
+    address: "123 Way 456 Street Somewhere, USA",
+    phone: "1 (888) 888-8888",
+    email: "sales@greatidea.io",
   },
-  "footer": {
-    "copyright" : "Copyright Great Idea! 2018"
+  footer: {
+    copyright: "Copyright Great Idea! 2018",
   },
 };
 
+// Functions
+
+function navValues(node, index) {
+  return (node.textContent = this[`nav-item-${index}`]);
+}
+
+// Header
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute("src", siteContent["nav"]["img-src"]);
+
+let nav_a1 = document.createElement("a");
+
+let empty_href = document.createAttribute("href");
+empty_href.value = "#";
+
+nav_a1.setAttributeNode(empty_href);
+
+let nav_a2 = nav_a1.cloneNode();
+
+nav_a1.textContent = "Prepended";
+nav_a2.textContent = "Postpended";
+
+let nav_box = document.querySelector("nav");
+
+let nav_link = document.querySelectorAll("nav > a");
+nav_link.forEach(navValues, siteContent["nav"]);
+
+nav_box.prepend(nav_a1);
+nav_box.appendChild(nav_a2);
+
+document
+  .querySelectorAll("nav > a")
+  .forEach((a_nodes) => (a_nodes.style.color = "green"));
+
+// CTA
+
+let cta_text = document.querySelector(".cta-text h1");
+cta_text.textContent = siteContent["cta"]["h1"];
+
+// ^                 LINE BREAKS            ^
+
+let cta_button = document.querySelector(".cta-text button");
+cta_button.textContent = siteContent["cta"]["button"];
+
+let cta_image = document.getElementById("cta-img");
+cta_image.setAttribute("src", siteContent["cta"]["img-src"]);
+
+// Main Content
+
+let top_content = document.querySelector(".top-content");
+top_content.children[0].children[0].textContent =
+  siteContent["main-content"]["features-h4"];
+top_content.children[0].children[1].textContent =
+  siteContent["main-content"]["features-content"];
+
+top_content.children[1].children[0].textContent =
+  siteContent["main-content"]["about-h4"];
+top_content.children[1].children[1].textContent =
+  siteContent["main-content"]["about-content"];
+
+let mid_img = document.getElementById("middle-img");
+mid_img.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+
+let bottom_content = document.querySelector(".bottom-content");
+bottom_content.children[0].children[0].textContent =
+  siteContent["main-content"]["services-h4"];
+bottom_content.children[0].children[1].textContent =
+  siteContent["main-content"]["services-content"];
+
+bottom_content.children[1].children[0].textContent =
+  siteContent["main-content"]["product-h4"];
+bottom_content.children[1].children[1].textContent =
+  siteContent["main-content"]["product-content"];
+
+bottom_content.children[2].children[0].textContent =
+  siteContent["main-content"]["vision-h4"];
+bottom_content.children[2].children[1].textContent =
+  siteContent["main-content"]["vision-content"];
+
+// ^        For each instead        ^
+
+// Contact
+
+// let contact_title = document.querySelector(".contact h4");
+// contact_title.textContent = siteContent["contact"]["contact-h4"];
+
+// let contact_info = document.querySelectorAll(".contact > p");
+// contact.forEach
+
+let contact_info = document.querySelector(".contact");
+contact_info.children[0].textContent = siteContent["contact"]["contact-h4"];
+
+contact_info.children[1].textContent = siteContent["contact"]["address"];
+contact_info.children[2].textContent = siteContent["contact"]["phone"];
+contact_info.children[3].textContent = siteContent["contact"]["email"];
+
+let footer_p = document.querySelector("footer > p");
+footer_p.textContent = siteContent["footer"]["copyright"];
